@@ -1,56 +1,72 @@
 Rails.application.routes.draw do
-  # The priority is based upon order of creation: first created -> highest priority.
-  # See how all your routes lay out with "rake routes".
+  # get 'items/index'
 
-  # You can have the root of your site routed with "root"
-  # root 'welcome#index'
+  # get 'items/new'
 
-  # Example of regular route:
-  #   get 'products/:id' => 'catalog#view'
+  # get 'items/show'
 
-  # Example of named route that can be invoked with purchase_url(id: product.id)
-  #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase
+  # get 'items/edit'
 
-  # Example resource route (maps HTTP verbs to controller actions automatically):
-  #   resources :products
+  # get 'giftees/index'
 
-  # Example resource route with options:
-  #   resources :products do
-  #     member do
-  #       get 'short'
-  #       post 'toggle'
-  #     end
-  #
-  #     collection do
-  #       get 'sold'
-  #     end
-  #   end
+  # get 'giftees/show'
 
-  # Example resource route with sub-resources:
-  #   resources :products do
-  #     resources :comments, :sales
-  #     resource :seller
-  #   end
+  # get 'giftees/new'
 
-  # Example resource route with more complex sub-resources:
-  #   resources :products do
-  #     resources :comments
-  #     resources :sales do
-  #       get 'recent', on: :collection
-  #     end
-  #   end
+  # get 'giftees/edit'
 
-  # Example resource route with concerns:
-  #   concern :toggleable do
-  #     post 'toggle'
-  #   end
-  #   resources :posts, concerns: :toggleable
-  #   resources :photos, concerns: :toggleable
+  # get 'gifters/index'
 
-  # Example resource route within a namespace:
-  #   namespace :admin do
-  #     # Directs /admin/products/* to Admin::ProductsController
-  #     # (app/controllers/admin/products_controller.rb)
-  #     resources :products
-  #   end
-end
+  # get 'gifters/new'
+
+  # get 'gifters/show'
+
+  # get 'gifters/edit'
+
+  # get 'homepage/index'
+
+  root :to => 'index#homepage'
+  resources :gifters do 
+    resources :items
+  end
+
+  resources :giftees do 
+    resources :items
+  end
+
+end 
+# Prefix Verb   URI Pattern                                  Controller#Action
+#             root GET    /                                            index#homepage
+#     gifter_items GET    /gifters/:gifter_id/items(.:format)          items#index
+#                  POST   /gifters/:gifter_id/items(.:format)          items#create
+#  new_gifter_item GET    /gifters/:gifter_id/items/new(.:format)      items#new
+# edit_gifter_item GET    /gifters/:gifter_id/items/:id/edit(.:format) items#edit
+#      gifter_item GET    /gifters/:gifter_id/items/:id(.:format)      items#show
+#                  PATCH  /gifters/:gifter_id/items/:id(.:format)      items#update
+#                  PUT    /gifters/:gifter_id/items/:id(.:format)      items#update
+#                  DELETE /gifters/:gifter_id/items/:id(.:format)      items#destroy
+#          gifters GET    /gifters(.:format)                           gifters#index
+#                  POST   /gifters(.:format)                           gifters#create
+#       new_gifter GET    /gifters/new(.:format)                       gifters#new
+#      edit_gifter GET    /gifters/:id/edit(.:format)                  gifters#edit
+#           gifter GET    /gifters/:id(.:format)                       gifters#show
+#                  PATCH  /gifters/:id(.:format)                       gifters#update
+#                  PUT    /gifters/:id(.:format)                       gifters#update
+#                  DELETE /gifters/:id(.:format)                       gifters#destroy
+#     giftee_items GET    /giftees/:giftee_id/items(.:format)          items#index
+#                  POST   /giftees/:giftee_id/items(.:format)          items#create
+#  new_giftee_item GET    /giftees/:giftee_id/items/new(.:format)      items#new
+# edit_giftee_item GET    /giftees/:giftee_id/items/:id/edit(.:format) items#edit
+#      giftee_item GET    /giftees/:giftee_id/items/:id(.:format)      items#show
+#                  PATCH  /giftees/:giftee_id/items/:id(.:format)      items#update
+#                  PUT    /giftees/:giftee_id/items/:id(.:format)      items#update
+#                  DELETE /giftees/:giftee_id/items/:id(.:format)      items#destroy
+#          giftees GET    /giftees(.:format)                           giftees#index
+#                  POST   /giftees(.:format)                           giftees#create
+#       new_giftee GET    /giftees/new(.:format)                       giftees#new
+#      edit_giftee GET    /giftees/:id/edit(.:format)                  giftees#edit
+#           giftee GET    /giftees/:id(.:format)                       giftees#show
+#                  PATCH  /giftees/:id(.:format)                       giftees#update
+#                  PUT    /giftees/:id(.:format)                       giftees#update
+#                  DELETE /giftees/:id(.:format)                       giftees#destroy
+
