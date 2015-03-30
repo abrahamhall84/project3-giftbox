@@ -1,5 +1,5 @@
 class GiftersController < ApplicationController
-    before_action :find_gifter, only: [:edit, :show, :destroy, :add_item, :remove_item]
+    before_action :find_gifter_by_id(params[:id]), only: [:edit, :show, :destroy, :add_item, :remove_item]
   def index
     @gifters = Gifter.all
   end

@@ -25,7 +25,7 @@ Rails.application.routes.draw do
 
   # get 'homepage/index'
 
-  root :to => 'index#homepage'
+  root :to => 'homepage#index'
   resources :gifters do 
     resources :items
   end

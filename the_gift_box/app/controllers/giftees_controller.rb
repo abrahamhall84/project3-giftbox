@@ -1,7 +1,7 @@
 class GifteesController < ApplicationController
   before_action :find_giftee, only: [:edit, :show, :destroy, :add_item, :remove_item]
   def index
-    @giftees = Giftee.all
+    @gifters = Gifter.all
   end
 
   def create
